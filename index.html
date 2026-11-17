@@ -133,15 +133,15 @@
     position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0.55;
   }
   .hero .wrap{position:relative;z-index:1;}
-  .hero-top{display:grid;grid-template-columns:1fr minmax(220px,320px);gap:40px;align-items:stretch;}
+  .hero-top{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
   .portrait{
-    width:100%;height:100%;min-height:360px;object-fit:cover;object-position:top;
-    -webkit-mask-image: radial-gradient(ellipse 82% 88% at 50% 42%, black 50%, rgba(0,0,0,0.7) 68%, transparent 100%);
-    mask-image: radial-gradient(ellipse 82% 88% at 50% 42%, black 50%, rgba(0,0,0,0.7) 68%, transparent 100%);
+    width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:top;
+    -webkit-mask-image: radial-gradient(circle at 50% 42%, black 52%, rgba(0,0,0,0.65) 70%, transparent 100%);
+    mask-image: radial-gradient(circle at 50% 42%, black 52%, rgba(0,0,0,0.65) 70%, transparent 100%);
   }
   @media (max-width:680px){
-    .hero-top{grid-template-columns:1fr;}
-    .portrait{min-height:320px;max-height:420px;}
+    .hero-top{grid-template-columns:1fr;justify-items:start;}
+    .portrait{width:150px;height:150px;}
   }
   .big-name{
     font-size:clamp(2.2rem,6vw,4rem);line-height:0.95;font-weight:700;
@@ -453,7 +453,7 @@
         <p>Nuevos modelos de negocio, oportunidades AgTech, valorización de biomasa y articulación entre startups, empresas e inversores del ecosistema agroalimentario.</p>
       </div>
     </div>
-    <p class="areas-footnote">También capacito equipos en <a href="#formacion">ciencia de datos y análisis de negocios</a>, y ejerzo <a href="#experiencia">gestión institucional</a> en la FCA-UNL.</p>
+    <p class="areas-footnote">También capacito equipos en <a href="#formacion">ciencia de datos y análisis de negocios</a>.</p>
   </div>
 </section>
 
