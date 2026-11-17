@@ -307,6 +307,29 @@
   .contact-list a u, .contact-list a{text-decoration:underline;text-decoration-color:color-mix(in srgb, var(--cta-ink) 40%, transparent);}
   @media (max-width:760px){.contact-card{grid-template-columns:1fr;padding:32px 24px;}}
 
+  .contact-form{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+  .contact-form input, .contact-form textarea{
+    width:100%;padding:11px 14px;border-radius:9px;
+    border:1.5px solid color-mix(in srgb, var(--cta-ink) 30%, transparent);
+    background:color-mix(in srgb, var(--cta-ink) 10%, transparent);
+    color:var(--cta-ink);font-family:var(--body);font-size:0.92rem;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder{
+    color:color-mix(in srgb, var(--cta-ink) 55%, transparent);
+  }
+  .contact-form input:focus, .contact-form textarea:focus{
+    outline:none;border-color:color-mix(in srgb, var(--cta-ink) 60%, transparent);
+  }
+  .contact-form textarea{min-height:92px;resize:vertical;font-family:var(--body);}
+  .contact-form button{
+    align-self:flex-start;padding:11px 22px;border-radius:7px;font-weight:600;font-size:0.88rem;
+    background:var(--cta-ink);color:var(--cta-bg);border:none;cursor:pointer;
+  }
+  .contact-form button:hover{background:color-mix(in srgb, var(--cta-ink) 88%, var(--cta-bg) 12%);}
+  .contact-form .note{
+    font-size:0.74rem;color:color-mix(in srgb, var(--cta-ink) 65%, transparent);margin:0;
+  }
+
   footer{padding:32px 0 48px;text-align:center;color:var(--muted);font-size:0.82rem;}
 
   @media (max-width:600px){
@@ -669,7 +692,14 @@
       <div>
         <p class="eyebrow" style="color:color-mix(in srgb, var(--cta-ink) 75%, transparent);">Contacto</p>
         <h2 style="font-size:1.8rem;">Hablemos de tu próximo proyecto</h2>
-        <p class="lede">Investigación, consultoría en agronegocios, docencia o colaboración en bioeconomía e innovación — escribime y coordinamos.</p>
+        <p class="lede">¿Estás evaluando un proyecto de inversión, necesitás un análisis de competitividad o de mercado, o buscás sumar investigación, formación o innovación AgTech a tu equipo? Contame en qué estás pensando y coordinamos una reunión.</p>
+        <form class="contact-form" onsubmit="return sendContactForm(event)">
+          <input type="text" id="cf-name" placeholder="Tu nombre" required>
+          <input type="email" id="cf-email" placeholder="Tu email" required>
+          <textarea id="cf-message" placeholder="Contame en qué estás pensando" required></textarea>
+          <button type="submit">Enviar mensaje →</button>
+          <p class="note">Al enviar se abre tu programa de correo con el mensaje ya redactado a pmacetta@gmail.com.</p>
+        </form>
       </div>
       <div class="contact-list">
         <a href="mailto:pmacetta@gmail.com"><span class="label">Email personal</span>pmacetta@gmail.com</a>
@@ -687,6 +717,16 @@
 </footer>
 
 <script>
+  function sendContactForm(e){
+    e.preventDefault();
+    var name = document.getElementById('cf-name').value.trim();
+    var email = document.getElementById('cf-email').value.trim();
+    var message = document.getElementById('cf-message').value.trim();
+    var subject = encodeURIComponent('Contacto desde el sitio — ' + (name || 'Sin nombre'));
+    var body = encodeURIComponent('Nombre: ' + name + '\nEmail: ' + email + '\n\n' + message);
+    window.location.href = 'mailto:pmacetta@gmail.com?subject=' + subject + '&body=' + body;
+    return false;
+  }
   (function(){
     const canvas = document.getElementById('field-canvas');
     const ctx = canvas.getContext('2d');
