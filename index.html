@@ -11,18 +11,20 @@
   /* ============ DESIGN TOKENS ============ */
   /* Layout: single-column editorial page, generous section rhythm, field-row motif in hero */
   :root{
-    --bg:#f5f4ef;
-    --surface:#ffffff;
-    --surface-2:#eef0e7;
-    --ink:#1d241b;
-    --ink-soft:#4b5346;
-    --muted:#6f7865;
-    --primary:#2e4d2a;
+    --bg:#efe6d3;
+    --surface:#fffdf8;
+    --surface-2:#e6d9bd;
+    --ink:#2a2118;
+    --ink-soft:#52412f;
+    --muted:#7d6b53;
+    --primary:#6b4a2f;
     --primary-ink:#ffffff;
-    --accent:#b9842c;
-    --accent-ink:#2a1c05;
-    --border:#dcdccf;
-    --shadow: 0 1px 2px rgba(29,36,27,0.06), 0 8px 24px -12px rgba(29,36,27,0.18);
+    --accent:#8a4a2e;
+    --accent-ink:#f7f1e4;
+    --border:#ddcda8;
+    --cta-bg:#2a2118;
+    --cta-ink:#f3ecdc;
+    --shadow: 0 1px 2px rgba(42,33,24,0.08), 0 8px 24px -12px rgba(42,33,24,0.22);
     --display: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
     --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
     color-scheme: light;
@@ -30,34 +32,38 @@
 
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#141810;
-      --surface:#1b2116;
-      --surface-2:#212819;
-      --ink:#eceee4;
-      --ink-soft:#c3c9b8;
-      --muted:#93997f;
-      --primary:#8fbf84;
-      --primary-ink:#10170c;
-      --accent:#e3ab52;
+      --bg:#19140e;
+      --surface:#231c14;
+      --surface-2:#2b2217;
+      --ink:#ece1cc;
+      --ink-soft:#c6b999;
+      --muted:#988868;
+      --primary:#cda06a;
+      --primary-ink:#20170d;
+      --accent:#e0906a;
       --accent-ink:#241704;
-      --border:#30382a;
+      --border:#3b2f1f;
+      --cta-bg:#ece1cc;
+      --cta-ink:#20170d;
       --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 28px -14px rgba(0,0,0,0.6);
       color-scheme: dark;
     }
   }
 
   :root[data-theme="dark"]{
-    --bg:#141810;
-    --surface:#1b2116;
-    --surface-2:#212819;
-    --ink:#eceee4;
-    --ink-soft:#c3c9b8;
-    --muted:#93997f;
-    --primary:#8fbf84;
-    --primary-ink:#10170c;
-    --accent:#e3ab52;
+    --bg:#19140e;
+    --surface:#231c14;
+    --surface-2:#2b2217;
+    --ink:#ece1cc;
+    --ink-soft:#c6b999;
+    --muted:#988868;
+    --primary:#cda06a;
+    --primary-ink:#20170d;
+    --accent:#e0906a;
     --accent-ink:#241704;
-    --border:#30382a;
+    --border:#3b2f1f;
+    --cta-bg:#ece1cc;
+    --cta-ink:#20170d;
     --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 28px -14px rgba(0,0,0,0.6);
     color-scheme: dark;
   }
@@ -145,13 +151,13 @@
   .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;}
   .btn{
     display:inline-flex;align-items:center;gap:8px;
-    padding:11px 20px;border-radius:999px;font-weight:600;font-size:0.92rem;
+    padding:12px 22px;border-radius:8px;font-weight:600;font-size:0.92rem;
     text-decoration:none;border:1.5px solid transparent;cursor:pointer;
   }
-  .btn-primary{background:var(--primary);color:var(--primary-ink);}
-  .btn-primary:hover{background:color-mix(in srgb, var(--primary) 85%, black 10%);}
-  .btn-ghost{border-color:var(--border);color:var(--ink);background:transparent;}
-  .btn-ghost:hover{border-color:var(--ink-soft);}
+  .btn-primary{background:var(--cta-bg);color:var(--cta-ink);}
+  .btn-primary:hover{background:color-mix(in srgb, var(--cta-bg) 85%, var(--muted) 15%);}
+  .btn-ghost{border-color:var(--muted);color:var(--ink);background:transparent;}
+  .btn-ghost:hover{border-color:var(--ink);background:var(--surface-2);}
 
   .stats{
     margin-top:56px;
@@ -272,21 +278,21 @@
 
   /* ---------- CONTACTO ---------- */
   .contact-card{
-    background:var(--primary);color:var(--primary-ink);border-radius:20px;
+    background:var(--cta-bg);color:var(--cta-ink);border-radius:14px;
     padding:48px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;
   }
-  .contact-card h2{color:var(--primary-ink);}
-  .contact-card p.lede{color:color-mix(in srgb, var(--primary-ink) 82%, transparent);}
+  .contact-card h2{color:var(--cta-ink);}
+  .contact-card p.lede{color:color-mix(in srgb, var(--cta-ink) 82%, transparent);}
   .contact-list{display:flex;flex-direction:column;gap:14px;}
   .contact-list a, .contact-list span{
-    color:var(--primary-ink);text-decoration:none;font-weight:500;font-size:0.98rem;
+    color:var(--cta-ink);text-decoration:none;font-weight:500;font-size:0.98rem;
     display:flex;flex-direction:column;
   }
   .contact-list .label{
     font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;
-    color:color-mix(in srgb, var(--primary-ink) 65%, transparent);font-weight:700;margin-bottom:2px;
+    color:color-mix(in srgb, var(--cta-ink) 65%, transparent);font-weight:700;margin-bottom:2px;
   }
-  .contact-list a u, .contact-list a{text-decoration:underline;text-decoration-color:color-mix(in srgb, var(--primary-ink) 40%, transparent);}
+  .contact-list a u, .contact-list a{text-decoration:underline;text-decoration-color:color-mix(in srgb, var(--cta-ink) 40%, transparent);}
   @media (max-width:760px){.contact-card{grid-template-columns:1fr;padding:32px 24px;}}
 
   footer{padding:32px 0 48px;text-align:center;color:var(--muted);font-size:0.82rem;}
@@ -648,7 +654,7 @@
   <div class="wrap">
     <div class="contact-card">
       <div>
-        <p class="eyebrow" style="color:color-mix(in srgb, var(--primary-ink) 75%, transparent);">Contacto</p>
+        <p class="eyebrow" style="color:color-mix(in srgb, var(--cta-ink) 75%, transparent);">Contacto</p>
         <h2 style="font-size:1.8rem;">Hablemos de tu próximo proyecto</h2>
         <p class="lede">Investigación, consultoría en agronegocios, docencia o colaboración en bioeconomía e innovación — escribime y coordinamos.</p>
       </div>
