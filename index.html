@@ -134,13 +134,12 @@
   }
   .hero .wrap{position:relative;z-index:1;}
   .hero-top{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
-  .portrait-frame{position:relative;width:200px;height:200px;flex:none;}
+  .portrait-frame{
+    position:relative;width:200px;height:200px;flex:none;
+    border-radius:50%;overflow:hidden;border:1.5px solid var(--ink-soft);
+  }
   .portrait{
     width:100%;height:100%;object-fit:cover;object-position:top;display:block;
-  }
-  .portrait-frame::after{
-    content:"";position:absolute;inset:0;border-radius:50%;
-    border:1.5px solid var(--ink-soft);pointer-events:none;
   }
   @media (max-width:680px){
     .hero-top{grid-template-columns:1fr;justify-items:start;}
